@@ -6,6 +6,9 @@
 /.react-router/
 /build/
 
+**/schema.prisma
+
 # Cloudflare
 .mf
 .wrangler
+.dev.vars

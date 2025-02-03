@@ -1,8 +1,6 @@
 workers_dev = true
 name = "web"
+compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2024-12-12"
 main = "./build/server/index.js"
 assets = { directory = "./build/client/" }
-
-[vars]
-VALUE_FROM_CLOUDFLARE = "Hello from Cloudflare"
