@@ -17,6 +17,9 @@ dependencies:
   '@zenstackhq/runtime':
     specifier: 2.11.5
     version: 2.11.5(@prisma/client@6.3.0)
+  hono:
+    specifier: ^4.6.20
+    version: 4.6.20
   isbot:
     specifier: ^5.1.17
     version: 5.1.22
@@ -29,6 +32,9 @@ dependencies:
   react-router:
     specifier: ^7.1.5
     version: 7.1.5(react-dom@19.0.0)(react@19.0.0)
+  remix-hono:
+    specifier: ^0.0.18
+    version: 0.0.18(hono@4.6.20)(pretty-cache-header@1.0.0)(react-router@7.1.5)(zod@3.24.1)
 
 devDependencies:
   '@biomejs/biome':
@@ -2687,6 +2693,11 @@ packages:
     resolution: {integrity: sha512-yR5lWvNz7c85OhVAEAeFhVCc/GV4C30Fjzc/rCP0aCWzc1UUOPUk55dK/qdwTZHBvMZo+eZ2jpk62ndX/xMFlg==}
     dev: true
 
+  /hono@4.6.20:
+    resolution: {integrity: sha512-5qfNQeaIptMaJKyoJ6N/q4gIq0DBp2FCRaLNuUI3LlJKL4S37DY/rLL1uAxA4wrPB39tJ3s+f7kgI79O4ScSug==}
+    engines: {node: '>=16.9.0'}
+    dev: false
+
   /hosted-git-info@6.1.3:
     resolution: {integrity: sha512-HVJyzUrLIL1c0QmviVh5E8VGyUS7xCFPS6yydaVd1UegW+ibV/CohqTH9MkOLDp5o+rb82DMo77PTuc9F/8GKw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -3564,6 +3575,13 @@ packages:
     hasBin: true
     dev: true
 
+  /pretty-cache-header@1.0.0:
+    resolution: {integrity: sha512-xtXazslu25CdnGnUkByU1RoOjK55TqwatJkjjJLg5ZAdz2Lngko/mmaUgeET36P2GMlNwh3fdM7FWBO717pNcw==}
+    engines: {node: '>=12.13'}
+    dependencies:
+      timestring: 6.0.0
+    dev: false
+
   /pretty-repl@4.0.1:
     resolution: {integrity: sha512-Ve+ZNS5fwxylks3TTR4su7SaNAHVOh++7J5R8VKFAHIjmAMS8X79rnETc/JJoqay52cfgeHum7vm2+9hFSys9Q==}
     engines: {node: '>=14'}
@@ -3734,6 +3752,34 @@ packages:
       get-proto: 1.0.1
       gopd: 1.2.0
       set-function-name: 2.0.2
+
+  /remix-hono@0.0.18(hono@4.6.20)(pretty-cache-header@1.0.0)(react-router@7.1.5)(zod@3.24.1):
+    resolution: {integrity: sha512-pYRFCRjCSDxjIco+qUkGQNIOZwKC/3NaDssLE2gBsLVHuNymUbhwMZeQDu1ERxdrYQuBE19Zn3vS8jL8AXcoxA==}
+    peerDependencies:
+      '@react-router/cloudflare': ^7.0.1
+      hono: ^4.6.12
+      i18next: ^24.0.5
+      pretty-cache-header: ^1.0.0
+      react-router: ^7.0.1
+      remix-i18next: ^7.0.0
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      '@react-router/cloudflare':
+        optional: true
+      i18next:
+        optional: true
+      react-router:
+        optional: true
+      remix-i18next:
+        optional: true
+      zod:
+        optional: true
+    dependencies:
+      hono: 4.6.20
+      pretty-cache-header: 1.0.0
+      react-router: 7.1.5(react-dom@19.0.0)(react@19.0.0)
+      zod: 3.24.1
+    dev: false
 
   /restore-cursor@3.1.0:
     resolution: {integrity: sha512-l+sSefzHpj5qimhFSE5a8nufZYAM3sBSVMAPtYkmC+4EH2anSGaEMXSD0izRQbu9nfyQ9y5JrVmp7E8oZrUjvA==}
@@ -4148,6 +4194,11 @@ packages:
       readable-stream: 2.3.8
       xtend: 4.0.2
     dev: true
+
+  /timestring@6.0.0:
+    resolution: {integrity: sha512-wMctrWD2HZZLuIlchlkE2dfXJh7J2KDI9Dwl+2abPYg0mswQHfOAyQW3jJg1pY5VfttSINZuKcXoB3FGypVklA==}
+    engines: {node: '>=8'}
+    dev: false
 
   /tiny-invariant@1.3.3:
     resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}

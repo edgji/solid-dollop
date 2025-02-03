@@ -1,4 +1,9 @@
-import { createRequestHandler } from "react-router";
+import { Hono } from "hono";
+import { contextStorage } from "hono/context-storage";
+import {
+  type ReactRouterMiddlewareOptions,
+  reactRouter,
+} from "remix-hono/handler";
 
 declare global {
   interface CloudflareEnvironment extends Env {}
@@ -13,16 +18,15 @@ declare module "react-router" {
   }
 }
 
-const requestHandler = createRequestHandler(
-  // @ts-expect-error - virtual module provided by React Router at build time
-  () => import("virtual:react-router/server-build"),
-  import.meta.env.MODE,
+const app = new Hono();
+
+app.use(
+  contextStorage(),
+  reactRouter({
+    mode: import.meta.env.MODE as ReactRouterMiddlewareOptions["mode"],
+    // @ts-expect-error - virtual module provided by React Router at build time
+    build: () => import("virtual:react-router/server-build"),
+  }),
 );
 
-export default {
-  fetch(request, env, ctx) {
-    return requestHandler(request, {
-      cloudflare: { env, ctx },
-    });
-  },
-} satisfies ExportedHandler<CloudflareEnvironment>;
+export default app satisfies ExportedHandler<CloudflareEnvironment>;

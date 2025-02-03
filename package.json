@@ -20,10 +20,12 @@
     "@prisma/client": "6.3.0",
     "@prisma/pg-worker": "^6.3.1",
     "@zenstackhq/runtime": "2.11.5",
+    "hono": "^4.6.20",
     "isbot": "^5.1.17",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.1.5"
+    "react-router": "^7.1.5",
+    "remix-hono": "^0.0.18"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
