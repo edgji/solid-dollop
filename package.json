@@ -6,6 +6,8 @@
     "build": "react-router build",
     "deploy": "pnpm run build && wrangler deploy",
     "dev": "react-router dev",
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write",
     "start": "wrangler dev",
     "typecheck": "react-router typegen && tsc -b",
     "typegen": "wrangler types"
@@ -17,6 +19,7 @@
     "react-router": "^7.1.5"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@cloudflare/workers-types": "^4.20250129.0",
     "@react-router/dev": "^7.1.5",
     "@tailwindcss/vite": "^4.0.0",
