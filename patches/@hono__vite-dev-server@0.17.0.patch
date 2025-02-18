@@ -1,0 +1,38 @@
+diff --git a/dist/adapter/cloudflare.js b/dist/adapter/cloudflare.js
+index 4c36c216bc013288396784b246514a250ad02e39..63f484b121fef8ac4c379e6e850be0d6dfed6088 100644
+--- a/dist/adapter/cloudflare.js
++++ b/dist/adapter/cloudflare.js
+@@ -5,16 +5,23 @@ let proxy = void 0;
+ const cloudflareAdapter = async (options) => {
+   proxy ??= await getPlatformProxy(options?.proxy);
+   Object.assign(globalThis, { caches: proxy.caches });
+-  if (typeof globalThis.navigator === "undefined") {
+-    globalThis.navigator = {
+-      userAgent: "Cloudflare-Workers"
+-    };
+-  } else {
+-    Object.defineProperty(globalThis.navigator, "userAgent", {
+-      value: "Cloudflare-Workers",
+-      writable: false
+-    });
+-  }
++  /**
++   * Setting the userAgent forces pg to use pg-cloudflare stream functions.
++   * In a non workerd environment it breaks since 'cloudflare:sockets' is not defined
++   * Similar issues related to prisma/pg and `cloudflare:sockets`:
++   *  https://github.com/remix-run/remix/issues/9245#issuecomment-2179517678
++   *  https://github.com/cloudflare/workerd/issues/2129
++   */
++  // if (typeof globalThis.navigator === "undefined") {
++  //   globalThis.navigator = {
++  //     userAgent: "Cloudflare-Workers"
++  //   };
++  // } else {
++  //   Object.defineProperty(globalThis.navigator, "userAgent", {
++  //     value: "Cloudflare-Workers",
++  //     writable: false
++  //   });
++  // }
+   Object.defineProperty(Request.prototype, "cf", {
+     get: function() {
+       if (proxy !== void 0) {
